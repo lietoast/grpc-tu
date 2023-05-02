@@ -45,7 +45,7 @@ func main() {
 
 	// 监听端口
 	listen, err := net.Listen("tcp", port)
-	failOnError(err, "failed to listen to port "+port)
+	failOnError(err, "Failed to listen to port "+port)
 
 	server := grpc.NewServer(
 		grpc.KeepaliveParams(keepAliveArgs),
@@ -74,15 +74,19 @@ func (e employeeService) GetByNo(c context.Context, r *pb.GetByNoRequest) (*pb.E
 
 	return nil, errors.New("employee not found")
 }
+
 func (e employeeService) GetAll(*pb.GetAllRequest, pb.EmployeeService_GetAllServer) error {
 	return nil
 }
+
 func (e employeeService) AddPhoto(pb.EmployeeService_AddPhotoServer) error {
 	return nil
 }
+
 func (e employeeService) Save(context.Context, *pb.EmployeeRequest) (*pb.EmployeeResponse, error) {
 	return nil, nil
 }
+
 func (e employeeService) SaveAll(pb.EmployeeService_SaveAllServer) error {
 	return nil
 }
